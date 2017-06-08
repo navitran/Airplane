@@ -45,6 +45,10 @@ public class AirplaneService {
 	public List<Airplane> findByFlight(Flight flight) {
 		return airplaneDao.findByFlight(flight.getId());
 	}
+	
+	public List<Airplane> findByFlight(long flightid) {
+		return airplaneDao.findByFlight(flightid);
+	}
 
 	public List<Airplane> findByModel(String model) {
 		return airplaneDao.findByModel(model);
