@@ -91,4 +91,22 @@ public class FlightRest {
 				
 				(date1,date2);
 	}	
+	
+	@Path("findbydestination/{Airport}")
+	@GET
+	public List<Flight> findByDestination(@PathParam("airport") Airport airport) {
+		return flightService.findByDestination(airport);
+	}	
+	
+	@Path("findbynumber/{number}")
+	@GET
+	public List<Flight> findByNumer(@PathParam("number") String number) {
+		return flightService.findByNumber(number);
+	}
+	
+	@Path("findbyorigin/{airport}")
+	@GET
+	public List<Flight> findByOrigin(@PathParam("airport") Airport airport) {
+		return flightService.findByOrigin(airport);
+	}
 }
