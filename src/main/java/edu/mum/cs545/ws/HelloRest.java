@@ -12,7 +12,6 @@ import javax.ws.rs.QueryParam;
 
 import cs545.airline.model.Airline;
 import cs545.airline.model.Airport;
-import cs545.airline.model.Flight;
 import cs545.airline.service.AirlineService;
 import cs545.airline.service.AirportService;
 

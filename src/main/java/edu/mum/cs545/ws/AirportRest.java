@@ -9,11 +9,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-
-import cs545.airline.model.Airplane;
 import cs545.airline.model.Airport;
 import cs545.airline.model.Flight;
-import cs545.airline.service.AirplaneService;
 import cs545.airline.service.AirportService;
 
 @Path("airport")

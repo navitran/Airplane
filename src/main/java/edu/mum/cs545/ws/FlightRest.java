@@ -15,8 +15,6 @@ import cs545.airline.model.Airline;
 import cs545.airline.model.Airplane;
 import cs545.airline.model.Airport;
 import cs545.airline.model.Flight;
-import cs545.airline.service.AirplaneService;
-import cs545.airline.service.AirportService;
 import cs545.airline.service.FlightService;
 
 @Path("flight")
