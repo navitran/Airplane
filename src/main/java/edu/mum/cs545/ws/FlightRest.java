@@ -87,6 +87,8 @@ public class FlightRest {
 	@Path("findbyarrivalbetween/{date,date}")
 	@GET
 	public List<Flight> findByArrivalBetween(@PathParam("date") Date date1,@PathParam("date") Date date2) {
-		return flightService.findByArrivalBetween(date1,date2);
+		return flightService.findByArrivalBetween
+				
+				(date1,date2);
 	}	
 }

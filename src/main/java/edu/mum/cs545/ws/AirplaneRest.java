@@ -27,7 +27,7 @@ import cs545.airline.service.AirportService;
 @Named
 @Path("airplane")
 public class AirplaneRest {
-
+// gegege
 	@Inject
 	private AirplaneService airlineService;
 
