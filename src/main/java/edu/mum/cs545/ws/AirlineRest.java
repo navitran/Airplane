@@ -46,7 +46,7 @@ public class AirlineRest {
 		} catch (Exception e) {
 			return "Fail to update this object";
 		}
-		return "Updated airline successfully";
+		return "Deleted airline successfully";
 	}
 	
 
