@@ -20,105 +20,85 @@ import cs545.airline.service.FlightService;
 
 @Path("flight")
 public class FlightRest {
-	
-//	@Inject
-//	private FlightService flightService;
-//	
-//	
-//	@Path("create")
-//	@POST
-//	public String create(Flight flight) {
-//		try {
-//			flightService.create(flight);
-//		} catch (Exception e) {
-//			return "Fail to create this object";
-//		}
-//		return "create flight successfully";	
-//		
-//	}
-//	
-//	@Path("delete")
-//	@DELETE
-//	public String delete(Flight flight) {
-//		try {
-//			flightService.delete(flight);
-//		} catch (Exception e) {
-//			return "Fail to delete this object";
-//		}
-//		return "deleted Flight successfully";	
-//	}
-//	
-//	@Path("update")
-//	@PUT
-//	public String update(Flight flight) {
-//		try {
-//			flightService.update(flight);
-//		} catch (Exception e) {
-//			return "Fail to update this object";
-//		}
-//		return "Updated flight successfully";	
-//	}
-//	
-//	@Path("findall")
-//	@GET
-//	public List<Flight> findAll() {
-//		return flightService.findAll();
-//	}
-//	
-//	@Path("findbyairline/{airline}")
-//	@GET
-//	public List<Flight> findByAirline(@PathParam("airline") Airline airline) {
-//		return flightService.findByAirline(airline);
-//	}
-//	
-//	@Path("findbyarrival/{airplane}")
-//	@GET
-//	public List<Flight> findByAirline(@PathParam("airplane") Airplane airplane) {
-//		return flightService.findByArrival(airplane);
-//	}	
-//	@Path("findbyarrival/{date}")
-//	@GET
-//	public List<Flight> findByArrival(@PathParam("date") Date date) {
-//		return flightService.findByArrival(date);
-//	}	
-//	
-//	@Path("findbyarrivalbetween/{date,date}")
-//	@GET
-//	public List<Flight> findByArrivalBetween(@PathParam("date") Date date1,@PathParam("date") Date date2) {
-//		return flightService.findByArrivalBetween
-//				
-//				(date1,date2);
-//	}	
-//	
-//	@Path("findbydestination/{Airport}")
-//	@GET
-//	public List<Flight> findByDestination(@PathParam("airport") Airport airport) {
-//		return flightService.findByDestination(airport);
-//	}	
-//	
-//	@Path("findbynumber/{number}")
-//	@GET
-//	public List<Flight> findByNumer(@PathParam("number") String number) {
-//		return flightService.findByNumber(number);
-//	}
-//	
-//	@Path("findbyorigin/{airport}")
-//	@GET
-//	public List<Flight> findByOrigin(@PathParam("airport") Airport airport) {
-//		return flightService.findByOrigin(airport);
-//	}
-	
-	
-	
+
 	@Inject
 	private FlightService flightService;
+
+	@Path("find/{flightid}")
+	@GET
+	public Flight find(@PathParam("flightid") long flightid) {
+		Flight flight = new Flight();
+		flight.setId(flightid);
+		return flightService.find(flight);
+	}
 
 	@Path("findall")
 	@GET
 	public List<Flight> findAll() {
 		return flightService.findAll();
 	}
+
+	@Path("findbyairline/{airlineid}")
+	@GET
+	public List<Flight> findbByAirline(@PathParam("airlineid") long airlineid) {
+		Airline airline = new Airline();
+		airline.setId(airlineid);
+		return flightService.findByAirline(airline);
+	}
+
+	@Path("findbyairplane/{airplaneid}")
+	@GET
+	public List<Flight> findbByAirplane(@PathParam("airplaneid") long airplaneid) {
+		Airplane airplane = new Airplane();
+		airplane.setId(airplaneid);
+		return flightService.findByAirplane(airplane);
+	}
+
+	@Path("findbyarrival/{date}")
+	@GET
+	public List<Flight> findbByArrival( @PathParam("date") Date date) {
+		return flightService.findByArrival(date);
+	}
+
+//	@Path("findbyarrivalbetween/{date1,date2}")
+//	@GET
+//	public List<Flight> findbByArrivalBetween(@PathParam("date") Date date1, @PathParam("date") Date date2) {
+//		return flightService.findByArrivalBetween(date1, date2);
+//	}
+//
+	@Path("findbydeparture/{date}")
+	@GET
+	public List<Flight> findbByDeparture(@PathParam("date") Date date) {
+		return flightService.findByDeparture(date);
+	}
+
+//	@Path("findbydeparturebetween/{date1,date2}")
+//	@GET
+//	public List<Flight> findbByDepartureBetween(@PathParam("date") Date date1, @PathParam("date") Date date2) {
+//		return flightService.findByDepartureBetween(date1, date2);
+//	}
+//
+	@Path("findbydestination/{airportid}")
+	@GET
+	public List<Flight> findByDestination(@PathParam("airportid") long airportid) {
+		Airport airport = new Airport();
+		airport.setId(airportid);
+		return flightService.findByDestination(airport);
+	}
 	
+	@Path("findbynumber/{number}")
+	@GET
+	public List<Flight> findByNumber(@PathParam("number") String number) {
+			return flightService.findByNumber(number);
+	}
+	
+	@Path("findbyorigin/{airportid}")
+	@GET
+	public List<Flight> findByOrigin(@PathParam("airportid") long airportid) {
+		Airport airport = new Airport();
+		airport.setId(airportid);
+		return flightService.findByOrigin(airport);
+	}
 	
 	
 }
