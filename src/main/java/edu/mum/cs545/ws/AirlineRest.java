@@ -12,6 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
 import cs545.airline.model.Airline;
+import cs545.airline.model.Airport;
 import cs545.airline.model.Flight;
 import cs545.airline.service.AirlineService;
 
@@ -30,25 +31,24 @@ public class AirlineRest {
 		} catch (Exception e) {
 			return "Fail to create this object";
 		}
-		return "created airline successfully";
+		return "create airline successfully";
 
 	}
-	
+
 	@Path("delete/{airlineid}")
 	@DELETE
 	public String delete(@PathParam("airlineid") long airlineid) {
 		try {
-			
+
 			Airline airline = new Airline();
 			airline.setId(airlineid);
 			airlineService.delete(airline);
-	
+
 		} catch (Exception e) {
 			return "Fail to update this object";
 		}
 		return "Deleted airline successfully";
 	}
-	
 
 	@Path("find/{airlineid}")
 	@GET
@@ -78,17 +78,17 @@ public class AirlineRest {
 		return airlineService.findByName(name);
 	}
 
-	
 	@Path("update/{airlineid}")
 	@PUT
 	public String update(@PathParam("airlineid") long airlineid, Airline airline) {
 		try {
 			airline.setId(airlineid);
 			airlineService.update(airline);
-	
+
 		} catch (Exception e) {
 			return "Fail to update this object";
 		}
 		return "Updated airline successfully";
 	}
+
 }
