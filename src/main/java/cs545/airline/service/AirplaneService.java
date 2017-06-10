@@ -16,12 +16,12 @@ import cs545.airline.model.Flight;
 @Transactional
 public class AirplaneService {
 
-	// These services should be evaluated to reconsider which methods should be public 
+	// These services should be evaluated to reconsider which methods should be
+	// public
 
 	@Inject
 	private AirplaneDao airplaneDao;
 
-	
 	public void create(Airplane airplane) {
 		airplaneDao.create(airplane);
 	}
@@ -45,7 +45,7 @@ public class AirplaneService {
 	public List<Airplane> findByFlight(Flight flight) {
 		return airplaneDao.findByFlight(flight.getId());
 	}
-	
+
 	public List<Airplane> findByFlight(long flightid) {
 		return airplaneDao.findByFlight(flightid);
 	}

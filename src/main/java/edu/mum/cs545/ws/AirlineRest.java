@@ -1,9 +1,6 @@
 package edu.mum.cs545.ws;
 
-
-
 import java.util.List;
-
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -14,74 +11,84 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-
-import cs545.airline.model.Airplane;
-import cs545.airline.service.AirplaneService;
-;
+import cs545.airline.model.Airline;
+import cs545.airline.model.Flight;
+import cs545.airline.service.AirlineService;
 
 @Named
 @Path("airline")
 public class AirlineRest {
 
 	@Inject
-	private AirplaneService airlineService;
+	private AirlineService airlineService;
+
+	@Path("create")
+	@POST
+	public String create(Airline airline) {
+		try {
+			airlineService.create(airline);
+		} catch (Exception e) {
+			return "Fail to create this object";
+		}
+		return "created airline successfully";
+
+	}
+	
+	@Path("delete/{airlineid}")
+	@DELETE
+	public String delete(@PathParam("airlineid") long airlineid) {
+		try {
+			
+			Airline airline = new Airline();
+			airline.setId(airlineid);
+			airlineService.delete(airline);
+	
+		} catch (Exception e) {
+			return "Fail to update this object";
+		}
+		return "Updated airline successfully";
+	}
+	
+
+	@Path("find/{airlineid}")
+	@GET
+	public Airline find(@PathParam("airlineid") long airlineid) {
+		Airline airline = new Airline();
+		airline.setId(airlineid);
+		return airlineService.find(airline);
+	}
 
 	@Path("findall")
 	@GET
-	public List<Airplane> findAll() {
+	public List<Airline> findAll() {
 		return airlineService.findAll();
-	}
-
-	@Path("findbymodel/{model}")
-	@GET
-	public List<Airplane> findByModel(@PathParam("model") String model) {
-		return airlineService.findByModel(model);
-	}
-
-	@Path("findbyserial/{serial}")
-	@GET
-	public Airplane findBySerial(@PathParam("serial") String serial) {
-		return airlineService.findBySrlnr(serial);
 	}
 
 	@Path("findbyflight/{flightid}")
 	@GET
-	public List<Airplane> findByFlight(@PathParam("flightid") long flightid) {
-		return airlineService.findByFlight(flightid);
+	public List<Airline> findByFlight(@PathParam("flightid") long flightid) {
+		Flight flight = new Flight();
+		flight.setId(flightid);
+		return airlineService.findByFlight(flight);
 	}
 
-	@Path("create")
-	@POST
-	public Airplane create(Airplane airplane) {
-//		try {
-//			airlineService.create(airplane);
-//		} catch (Exception e) {
-//			return "Fail to create this object";
-//		}
-//		return airplane"create airplane successfully";	
-		airlineService.create(airplane);
-		return airplane;
+	@Path("findbyname/{name}")
+	@GET
+	public Airline findByName(@PathParam("name") String name) {
+		return airlineService.findByName(name);
 	}
+
 	
-	@Path("delete")
-	@DELETE
-	public String delete(Airplane airplane) {
-		try {
-			airlineService.delete(airplane);
-		} catch (Exception e) {
-			return "Fail to delete this object";
-		}
-		return "deleted airplane successfully";	
-	}
-	
-	@Path("update")
+	@Path("update/{airlineid}")
 	@PUT
-	public String update(Airplane airplane) {
+	public String update(@PathParam("airlineid") long airlineid, Airline airline) {
 		try {
-			airlineService.update(airplane);
+			airline.setId(airlineid);
+			airlineService.update(airline);
+	
 		} catch (Exception e) {
 			return "Fail to update this object";
 		}
-		return "Updated airplane successfully";	
+		return "Updated airline successfully";
 	}
 }

@@ -33,6 +33,14 @@ public class AirplaneRest {
 		return airlineService.findAll();
 	}
 
+	@Path("find/{airplaneid}")
+	@GET
+	public Airplane findAirplane(@PathParam("airplaneid") long airplaneId) {
+		Airplane airplane = new Airplane();
+		airplane.setId(airplaneId);
+		return airlineService.find(airplane);
+	}
+	
 	@Path("findbymodel/{model}")
 	@GET
 	public List<Airplane> findByModel(@PathParam("model") String model) {
@@ -69,10 +77,11 @@ public class AirplaneRest {
 		
 	}
 	
-	@Path("delete")
+	@Path("delete/{airplaneid}")
 	@DELETE
-	public String delete(Airplane airplane) {
+	public String delete(@PathParam("airplaneid") long airplaneid, Airplane airplane) {
 		try {
+			airplane.setId(airplaneid);
 			airlineService.delete(airplane);
 		} catch (Exception e) {
 			return "Fail to delete this object";
@@ -80,10 +89,11 @@ public class AirplaneRest {
 		return "deleted airplane successfully";	
 	}
 	
-	@Path("update")
+	@Path("update/{airplaneid}")
 	@PUT
-	public String update(Airplane airplane) {
+	public String update(@PathParam("airplaneid") long airplaneId, Airplane airplane) {
 		try {
+			airplane.setId(airplaneId);
 			airlineService.update(airplane);
 		} catch (Exception e) {
 			return "Fail to update this object";
