@@ -1,4 +1,4 @@
-package cs545.airline.ws;
+package edu.mum.cs545.ws;
 
 import java.util.Date;
 import java.util.List;

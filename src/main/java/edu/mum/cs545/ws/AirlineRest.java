@@ -1,4 +1,4 @@
-package cs545.airline.ws;
+package edu.mum.cs545.ws;
 
 
 import java.util.List;
@@ -16,11 +16,11 @@ import javax.ws.rs.PathParam;
 
 import cs545.airline.model.Airplane;
 import cs545.airline.service.AirplaneService;
-
+;
 
 @Named
 @Path("airplane")
-public class AirplaneRest {
+public class AirlineRest {
 
 	@Inject
 	private AirplaneService airlineService;
