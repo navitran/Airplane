@@ -94,7 +94,7 @@ public class AirportRest {
 	
 	@Path("findbyname/{name}")
 	@GET
-	public List<Airport> findByName(@PathParam("flight") String name) {
+	public List<Airport> findByName(@PathParam("name") String name) {
 		return airportService.findByName(name);
 	}
 	
