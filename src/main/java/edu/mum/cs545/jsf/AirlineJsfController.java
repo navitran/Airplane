@@ -22,8 +22,17 @@ public class AirlineJsfController implements Serializable {
 
 	private List<Airline> listOfAirlines;
 	private Airline airline;
+	private String name;
 
-	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		
+		this.name = name;
+		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++"+name);
+	}
 
 	public List<Airline> getListOfAirlines() {
 		return airlineService.findAll();
@@ -44,35 +53,40 @@ public class AirlineJsfController implements Serializable {
 	public String create() {
 
 		try {
-			Airline airline1 = new Airline(airline.getName());
-			airlineService.create(airline1);
+			Airline airline = new Airline();
+			airline.setName(getName());
+			airlineService.create(airline);
 		} catch (Exception e) {
-			return "createairline";
+			return "airline";
 		}
-		return "listallairlines";
+		return "airline";
 
 	}
 
-	public String update() {
+	public String update(long airlineid, String name) {
 
 		try {
-			airlineService.update(airline);
+			Airline airline1 = new Airline();
+			airline1.setId(airlineid);
+			airline1.setName(name);
+			airlineService.update(airline1);
 		} catch (Exception e) {
-			return "updateairline";
+			return "airline";
 		}
-		return "listallairlines";
+		return "airline";
 
 	}
 
-	public String delete() {
+	public String delete(long airlineid) {
 
 		try {
-
-			airlineService.delete(airline);
+			Airline airline1 = new Airline();
+			airline1.setId(airlineid);
+			airlineService.delete(airline1);
 		} catch (Exception e) {
-			return "deleteairline";
+			return "airline";
 		}
-		return "listallairlines";
+		return "airline";
 
 	}
 

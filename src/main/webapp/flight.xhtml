@@ -23,9 +23,15 @@
 
 			</h:column>
 
-			<h:column>
+			<h:column filterBy="#{flight.airplane.model}" >
 				<f:facet name="header">Airplane</f:facet>
-				<h:outputText value="#{flight.airplane.serialnr}" />
+				<h:outputText value="#{flight.airplane.model}" />
+
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Airplane Capacity</f:facet>
+				<h:outputText value="#{flight.airplane.capacity}" />
 
 			</h:column>
 
@@ -59,17 +65,26 @@
 			</h:column>
 
 			<h:column>
-				<f:facet name="header">Origin</f:facet>
+				<f:facet name="header">Origin Code</f:facet>
 				<h:outputText value="#{flight.origin.airportcode}" />
 
 			</h:column>
 
 			<h:column>
+				<f:facet name="header">Origin Name</f:facet>
+				<h:outputText value="#{flight.origin.name}" />
+
+			</h:column>
+			<h:column>
 				<f:facet name="header">Destination</f:facet>
 				<h:outputText value="#{flight.destination.airportcode}" />
 
 			</h:column>
+			<h:column>
+				<f:facet name="header">Destination Name</f:facet>
+				<h:outputText value="#{flight.destination.name}" />
 
+			</h:column>
 		</h:dataTable>
 		<h:commandButton value="Home" action="index"></h:commandButton>
 

@@ -11,11 +11,13 @@
 <h:body>
 	<h1>JSF Airline Management Page</h1>
 	<h:form>
+
 		<h:outputLabel>Airline Name </h:outputLabel>
-		<h:inputText value="#{airlineJsfController.airline.name}"
+		<h:inputText value="#{airlineJsfController.name}"
 			required="true" requiredMessage="Airline Name is required"></h:inputText>
 		<h:commandButton value="Create"
-			action="#{airlineJsfController.create}"></h:commandButton>
+			action="#{airlineJsfController.create()}"></h:commandButton>
+
 		<h:commandButton value="Home" action="index"></h:commandButton>
 
 		<h:dataTable value="#{airlineJsfController.listOfAirlines}"
@@ -39,13 +41,13 @@
 			<h:column>
 				<f:facet name="header">Update</f:facet>
 				<h:commandButton value="Update"
-					action="#{airlineJsfController.update}"></h:commandButton>
+					action="#{airlineJsfController.update(airline.id, airline.name)}"></h:commandButton>
 			</h:column>
 
 			<h:column>
 				<f:facet name="header">Delete</f:facet>
 				<h:commandButton value="Delete"
-					action="#{airlineJsfController.delete}"></h:commandButton>
+					action="#{airlineJsfController.delete(airline.id)}"></h:commandButton>
 			</h:column>
 
 		</h:dataTable>
