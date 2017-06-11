@@ -23,6 +23,8 @@ public class AirlineJsfController implements Serializable {
 	private List<Airline> listOfAirlines;
 	private Airline airline;
 
+	
+
 	public List<Airline> getListOfAirlines() {
 		return airlineService.findAll();
 	}
@@ -39,16 +41,11 @@ public class AirlineJsfController implements Serializable {
 		this.airline = airline;
 	}
 
-	public String airlinedetail() {
-		airline = airlineService.findByName("SkyTeam");
-		return "airlinedetail";
-	}
-
 	public String create() {
 
 		try {
-			airline = new Airline(airline.getName());
-			airlineService.create(airline);
+			Airline airline1 = new Airline(airline.getName());
+			airlineService.create(airline1);
 		} catch (Exception e) {
 			return "createairline";
 		}
@@ -70,7 +67,7 @@ public class AirlineJsfController implements Serializable {
 	public String delete() {
 
 		try {
-			
+
 			airlineService.delete(airline);
 		} catch (Exception e) {
 			return "deleteairline";

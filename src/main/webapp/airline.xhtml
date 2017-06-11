@@ -12,9 +12,12 @@
 	<h1>JSF Airline Management Page</h1>
 	<h:form>
 		<h:outputLabel>Airline Name </h:outputLabel>
-    	   <h:inputText value="#{airlineJsfController.airline.name}" required="true" requiredMessage="Airline Name is required"></h:inputText>
-    	   <h:commandButton value="Create" action="#{airlineJsfController.create}"></h:commandButton>
-    	   <h:commandButton value="Home" action="index"></h:commandButton>
+		<h:inputText value="#{airlineJsfController.airline.name}"
+			required="true" requiredMessage="Airline Name is required"></h:inputText>
+		<h:commandButton value="Create"
+			action="#{airlineJsfController.create}"></h:commandButton>
+		<h:commandButton value="Home" action="index"></h:commandButton>
+
 		<h:dataTable value="#{airlineJsfController.listOfAirlines}"
 			var="airline" styleClass="airlineTable"
 			headerClass="airlineTableHeader"
@@ -23,15 +26,15 @@
 
 			<h:column>
 				<f:facet name="header">Airline ID</f:facet>
-				<h:outputText value="#{airline.id}"/>
-              
-            </h:column>
+				<h:outputText value="#{airline.id}" />
+
+			</h:column>
 
 			<h:column>
 				<f:facet name="header">Airline Name</f:facet>
-				<h:inputText value="#{airline.name}"/>
-               
-            </h:column>
+				<h:inputText value="#{airline.name}" />
+
+			</h:column>
 
 			<h:column>
 				<f:facet name="header">Update</f:facet>
@@ -47,7 +50,7 @@
 
 		</h:dataTable>
 		<h:commandButton value="Home" action="index"></h:commandButton>
-		
+
 
 
 
