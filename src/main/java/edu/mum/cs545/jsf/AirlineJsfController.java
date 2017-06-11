@@ -16,12 +16,10 @@ public class AirlineJsfController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	// private static AirlineService airlineService = new AirlineService();
 	@Inject
 	private AirlineService airlineService;
 
 	private List<Airline> listOfAirlines;
-	private Airline airline;
 	private String name;
 
 	public String getName() {
@@ -29,9 +27,9 @@ public class AirlineJsfController implements Serializable {
 	}
 
 	public void setName(String name) {
-		
+
 		this.name = name;
-		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++"+name);
+
 	}
 
 	public List<Airline> getListOfAirlines() {
@@ -42,13 +40,6 @@ public class AirlineJsfController implements Serializable {
 		this.listOfAirlines = listOfAirlines;
 	}
 
-	public Airline getAirline() {
-		return airline;
-	}
-
-	public void setAirline(Airline airline) {
-		this.airline = airline;
-	}
 
 	public String create() {
 
@@ -66,10 +57,10 @@ public class AirlineJsfController implements Serializable {
 	public String update(long airlineid, String name) {
 
 		try {
-			Airline airline1 = new Airline();
-			airline1.setId(airlineid);
-			airline1.setName(name);
-			airlineService.update(airline1);
+			Airline airline = new Airline();
+			airline.setId(airlineid);
+			airline.setName(name);
+			airlineService.update(airline);
 		} catch (Exception e) {
 			return "airline";
 		}
@@ -80,9 +71,9 @@ public class AirlineJsfController implements Serializable {
 	public String delete(long airlineid) {
 
 		try {
-			Airline airline1 = new Airline();
-			airline1.setId(airlineid);
-			airlineService.delete(airline1);
+			Airline airline = new Airline();
+			airline.setId(airlineid);
+			airlineService.delete(airline);
 		} catch (Exception e) {
 			return "airline";
 		}

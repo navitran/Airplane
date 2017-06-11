@@ -58,12 +58,6 @@ public class AirplaneRest {
 	public List<Airplane> findByFlight(@PathParam("flightid") long flightid) {
 		return airlineService.findByFlight(flightid);
 	}
-	
-//	@Path("findbyflight2/{flight}")
-//	@GET
-//	public List<Airplane> findByFlight(@PathParam("flight") Flight flight) {
-//		return airlineService.findByFlight(flight);
-//	}
 
 	@Path("create")
 	@POST

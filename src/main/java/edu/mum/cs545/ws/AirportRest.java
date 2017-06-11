@@ -72,7 +72,7 @@ public class AirportRest {
 
 	@Path("findbycity/{city}")
 	@GET
-	public List<Airport> findByModel(@PathParam("city") String city) {
+	public List<Airport> findByCity(@PathParam("city") String city) {
 		return airportService.findByCity(city);
 	}
 
