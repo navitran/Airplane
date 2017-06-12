@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+	<title>JSF view flights</title>
+</h:head>
+<h:body>
+	<h1>JSF view flights</h1>
+	<h:form>
+		<h:commandButton value="Home" action="#{flightJsfController.findByAirline(flight.airline.name)}"></h:commandButton>
+		<h:commandButton value="Filter by Airline" action="index"></h:commandButton>
+		<h:inputText value="#{flight.airline.name}" />
+		<h:dataTable value="#{flightJsfController.listOfFlights}" var="flight"
+			styleClass="flightTable" headerClass="flightTableHeader"
+			rowClasses="flightTableOddRow,flightTableEvenRow" border="1"
+			cellpadding="2" cellspacing="2">
+
+			<h:column>
+				<f:facet name="header">Flight Nbr</f:facet>
+				<h:outputText value="#{flight.flightnr}" />
+
+			</h:column>
+
+			<h:column filterBy="#{flight.airplane.model}" >
+				<f:facet name="header">Airplane</f:facet>
+				<h:outputText value="#{flight.airplane.model}" />
+
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Airplane Capacity</f:facet>
+				<h:outputText value="#{flight.airplane.capacity}" />
+
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Airline</f:facet>
+				<h:outputText value="#{flight.airline.name}" />
+
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Depature Date</f:facet>
+				<h:outputText value="#{flight.departureDate}" />
+
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Depature Time</f:facet>
+				<h:outputText value="#{flight.departureTime}" />
+
+			</h:column>
+			<h:column>
+				<f:facet name="header">Arrival Date</f:facet>
+				<h:outputText value="#{flight.arrivalDate}" />
+
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Arrival Time</f:facet>
+				<h:outputText value="#{flight.arrivalTime}" />
+
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Origin Code</f:facet>
+				<h:outputText value="#{flight.origin.airportcode}" />
+
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Origin Name</f:facet>
+				<h:outputText value="#{flight.origin.name}" />
+
+			</h:column>
+			<h:column>
+				<f:facet name="header">Destination</f:facet>
+				<h:outputText value="#{flight.destination.airportcode}" />
+
+			</h:column>
+			<h:column>
+				<f:facet name="header">Destination Name</f:facet>
+				<h:outputText value="#{flight.destination.name}" />
+
+			</h:column>
+		</h:dataTable>
+		<h:commandButton value="Home" action="index"></h:commandButton>
+
+	</h:form>
+</h:body>
+</html>
